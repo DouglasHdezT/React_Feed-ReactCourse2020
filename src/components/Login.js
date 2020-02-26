@@ -55,36 +55,38 @@ export default class Login extends Component{
 
 	render(){
 		return (
-			<div className = "jumbotron">
-				<h1 className="display-3">Inicio de sesión</h1>
-
-				<form onSubmit={this.submitHandler}>
-					<div className="form-group">
-						<label>Username: 
-							<input
-								className="form-control" 
-								type = "text" 
-								id = "username" 
-								onChange = {this.changeHandler}
-								value = {this.state.username}/>
-						</label>
-		
-						<label>Password: 
-							<input
-								className="form-control" 
-								type = "password" 
-								id = "password" 
-								onChange = {this.changeHandler}
-								value = {this.state.password}/>
-						</label>
-					</div>
-					<button className="btn btn-primary" type="submit">Sign in</button>
-				</form>
-				{this.state.errorFlag && 
-					<div className="alert alert-dismissible alert-danger">
-  						<strong>Oh snap!</strong> Hubo un error en el inicio de sesión.
-					</div>
-				}
+			<div className= "full-centered">
+				<div className = "jumbotron">
+					<h1 className="display-3">Inicio de sesión</h1>
+			
+					<form onSubmit={this.submitHandler}>
+						<div className="form-group">
+							<label>Username: 
+								<input
+									className="form-control" 
+									type = "text" 
+									id = "username" 
+									onChange = {this.changeHandler}
+									value = {this.state.username}/>
+							</label>
+					
+							<label>Password: 
+								<input
+									className="form-control" 
+									type = "password" 
+									id = "password" 
+									onChange = {this.changeHandler}
+									value = {this.state.password}/>
+							</label>
+						</div>
+						<button className="btn btn-primary" type="submit">Sign in</button>
+					</form>
+					{this.state.errorFlag && 
+						<div className="alert alert-dismissible alert-danger">
+			  						<strong>Oh snap!</strong> Hubo un error en el inicio de sesión.
+						</div>
+					}
+				</div>
 			</div>
 		);
 	}

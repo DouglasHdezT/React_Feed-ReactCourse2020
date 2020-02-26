@@ -1,3 +1,7 @@
+/*
+	Para registro y login
+*/
+
 .full-centered {
 	width: 100%;
 	height: 100vh;
@@ -10,6 +14,8 @@
 .jumbotron{
 	min-width: 45%;
 	padding: 4rem 4rem;
+
+	border-radius: 5rem 0 5rem 0;
 }
 
 .jumbotron>h1{
@@ -47,4 +53,63 @@
 
 .jumbotron .alert{
 	margin-top: 1em;
+}
+
+/*
+	Para React Feed
+*/
+
+.container>h1{
+	margin: 3rem 0.75rem;
+}
+
+.container>h2{
+	padding:1rem 1.5rem;
+
+	margin-bottom: 1.5rem;
+
+	border-bottom: #aaa 1px solid;
+}
+
+.posts{
+	width: 100%;
+	display: flex;
+	
+	flex-direction: column;
+	align-items: center;
+}
+
+.posts>.post{
+	width: 80%;
+}
+
+.posts>.post header>h5{
+	color: gray;
+}
+
+.posts>.post main{
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+
+
+}
+
+.posts>.post main>*{
+	width: 100%;
+}
+
+.posts>.post main>img{
+	width: 70%;
+	height: auto;
+
+	border-radius: 5px;
+}
+
+.posts>.post footer{
+	display: flex;
+
+	justify-content: space-between;
+	align-items: center;
 }
