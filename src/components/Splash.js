@@ -8,7 +8,10 @@ class Splash extends Component{
 
 		this.state = {
 			loading: true,
+			dots: '.',
 		}
+
+		this.interval = 0;
 	}
 
 	componentDidMount(){
@@ -19,7 +22,11 @@ class Splash extends Component{
 			}else{
 				this.props.history.push("/login")
 			}
-		}, 500)
+		}, 2000);
+
+		this.interval = setInterval(()=>{
+			this.state.dots.length === 5 ? this.setState({dots: '.'}) : this.setState({dots: this.state.dots + '.'})
+		},250);		
 	}
 
 	verifyToken = async (token) => {
@@ -36,6 +43,8 @@ class Splash extends Component{
 					this.setState({
 						loading: false,
 					})
+
+					clearInterval(this.interval)
 				}else{
 					localStorage.removeItem("token");
 					this.props.history.push("/login");
@@ -46,7 +55,7 @@ class Splash extends Component{
 	render(){
 		const splash = (
 			<div className="full-centered">
-				<h1>Carganding...</h1>
+				<h1>Carganding {this.state.dots}</h1>
 			</div>
 		);
 		return this.state.loading ? splash : this.props.children
