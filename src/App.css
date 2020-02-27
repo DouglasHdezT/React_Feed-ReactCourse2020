@@ -81,6 +81,8 @@
 
 .posts>.post{
 	width: 80%;
+
+	margin-bottom: 1.5rem;
 }
 
 .posts>.post header>h5{

@@ -7,7 +7,6 @@ import Register from './components/Register'
 import Login from './components/Login'
 import Splash from './components/Splash'
 import ReactFeed from "./components/Feed/ReactFeed";
-import Perfil from "./components/Feed/Perfil";
 
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
 	<Switch>
 		<Route path="/register" component={Register} />
 		<Route path="/login" component={Login} />
-		<Route path="/perfil" component={Perfil} />
 		<Route path="/" >
 			<Splash>
 				<ReactFeed/>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Post from './Post'
-import {Link} from 'react-router-dom'
 
 class ReactFeed extends Component {
   constructor(props){
@@ -17,8 +16,6 @@ class ReactFeed extends Component {
   likeHandler = index => {
     let postsAux = [...this.state.posts];
 
-	postsAux[index].likes += 1;
-	
 	const config = {
 		method: "PUT",
 		headers: {
@@ -28,7 +25,10 @@ class ReactFeed extends Component {
 		body: JSON.stringify(postsAux[index])
 	}
 
-	fetch('https://reactcourseapi.herokuapp.com/post/', config)
+	/* fetch('https://reactcourseapi.herokuapp.com/post/', config)
+		.then(res => {this.fetchData()}) */
+
+		fetch('https://reactcourseapi.herokuapp.com/post/like', config)
 		.then(res => {this.fetchData()})
 		
   }
@@ -79,8 +79,6 @@ class ReactFeed extends Component {
         <div className="posts">
           {postsComponents}
         </div>
-
-		<Link to = '/perfil'>Perfil</Link>
       </div>
     );
   }
