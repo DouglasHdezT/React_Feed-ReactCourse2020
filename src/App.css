@@ -55,6 +55,18 @@
 	margin-top: 1em;
 }
 
+.jumbotron .user-btns{
+	width: 100%;
+	display: flex;
+
+	justify-content: center;
+	align-self: center;
+}
+
+.jumbotron .user-btns>*{
+	margin: 1rem;
+}
+
 /*
 	Para React Feed
 */

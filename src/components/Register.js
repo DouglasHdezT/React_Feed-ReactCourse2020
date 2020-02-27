@@ -93,7 +93,11 @@ class Register extends Component{
 									value = {this.state.password}/>
 							</label>
 						</div>
-						<button className="btn btn-primary" type="submit">Sign up</button>
+
+						<div className="user-btns">
+							<button onClick={()=>{this.props.history.push('/login')}} type="button" className="btn btn-outline-info">Sign in</button>
+							<button className="btn btn-primary" type="submit">Sign up</button>
+						</div>
 					</form>
 					{this.state.errorFlag && 
 						<div className="alert alert-dismissible alert-danger">

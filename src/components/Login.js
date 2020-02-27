@@ -82,7 +82,10 @@ class Login extends Component{
 									value = {this.state.password}/>
 							</label>
 						</div>
-						<button className="btn btn-primary" type="submit">Sign in</button>
+						<div className="user-btns">
+							<button className="btn btn-primary" type="submit">Sign in</button>
+							<button onClick={()=>{this.props.history.push('/register')}} type="button" className="btn btn-outline-info">Sign up</button>
+						</div>
 					</form>
 					{this.state.errorFlag && 
 						<div className="alert alert-dismissible alert-danger">
