@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Post from './Post'
+import {Link} from 'react-router-dom'
 
 class ReactFeed extends Component {
   constructor(props){
@@ -10,6 +11,8 @@ class ReactFeed extends Component {
 	  token: localStorage.getItem('token')
     }
   }
+
+
 
   likeHandler = index => {
     let postsAux = [...this.state.posts];
@@ -43,7 +46,7 @@ class ReactFeed extends Component {
 		.then(res => res.json())
 		.then(data => {
 			this.setState({
-				posts: data.filteredPosts 
+				posts: data.filteredPosts || [] 
 			})
 
 		})
@@ -76,6 +79,8 @@ class ReactFeed extends Component {
         <div className="posts">
           {postsComponents}
         </div>
+
+		<Link to = '/perfil'>Perfil</Link>
       </div>
     );
   }

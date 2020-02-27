@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from "react-router-dom"
 
 const initState = {
 	username: "",
@@ -7,9 +8,11 @@ const initState = {
 	errorFlag: false,
 }
 
-export default class Register extends Component{
+class Register extends Component{
 	constructor(props){
 		super(props);
+
+		localStorage.getItem('token') && this.props.history.push('/');
 
 		this.state = {
 			...initState,
@@ -39,7 +42,7 @@ export default class Register extends Component{
 					res.json()
 					.then (data => {
 						localStorage.setItem('token', data.token);
-						this.setState({...initState})
+						this.props.history.push("/")
 					})
 				} else {
 					this.setState({
@@ -102,3 +105,5 @@ export default class Register extends Component{
 		);
 	}
 }
+
+export default withRouter(Register);

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from "react-router-dom";
 
 const initState = {
 	username: "",
@@ -6,9 +7,11 @@ const initState = {
 	errorFlag: false,
 }
 
-export default class Login extends Component{
+class Login extends Component{
 	constructor(props){
 		super(props);
+
+		localStorage.getItem('token') && this.props.history.push('/');
 
 		this.state = {
 			...initState,
@@ -37,7 +40,7 @@ export default class Login extends Component{
 					res.json()
 					.then (data => {
 						localStorage.setItem('token', data.token);
-						this.setState({...initState})
+						this.props.history.push("/")
 					})
 				} else {
 					this.setState({
@@ -61,7 +64,7 @@ export default class Login extends Component{
 			
 					<form onSubmit={this.submitHandler}>
 						<div className="form-group">
-							<label>Username: 
+							<label>Username or email: 
 								<input
 									className="form-control" 
 									type = "text" 
@@ -91,3 +94,5 @@ export default class Login extends Component{
 		);
 	}
 }
+
+export default withRouter(Login)
