@@ -19,7 +19,7 @@ class Splash extends Component{
 			}else{
 				this.props.history.push("/login")
 			}
-		}, 2000)
+		}, 500)
 	}
 
 	verifyToken = async (token) => {

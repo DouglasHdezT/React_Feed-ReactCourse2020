@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Post from './Post'
+import NavFeed from './NavFeed'
 
 class ReactFeed extends Component {
   constructor(props){
@@ -7,6 +8,7 @@ class ReactFeed extends Component {
 
     this.state = {
 	  posts: [],
+	  username:'',
 	  token: localStorage.getItem('token')
     }
   }
@@ -52,8 +54,28 @@ class ReactFeed extends Component {
 		})
   }
 
+  fetchUsername = () => {
+	let config = {
+		method: "GET",
+		headers: {
+			'Content-type': 'Application/json',
+			authorization: `Bearer ${this.state.token}`
+		}
+	}
+
+	fetch('https://reactcourseapi.herokuapp.com/user/name', config)
+		.then(res => res.json())
+		.then(data => {
+			this.setState({
+				username: data.username || ''
+			})
+
+		})
+  }
+
   componentDidMount(){
 	this.fetchData();
+	this.fetchUsername();
   }
   
   render(){
@@ -72,14 +94,19 @@ class ReactFeed extends Component {
     });
   
     return (
-      <div className = "container">
-        <h1 className="display-3">ReactFeed</h1>
-        <h2>Recent posts</h2>
-  
-        <div className="posts">
-          {postsComponents}
-        </div>
-      </div>
+      <>
+	  	<NavFeed
+			  username = {this.state.username}
+		  />
+		<div className = "container">
+			<h1 className="display-3">ReactFeed</h1>
+			<h2>Recent posts</h2>
+	
+			<div className="posts">
+			{postsComponents}
+			</div>
+		</div>
+	  </>
     );
   }
 }

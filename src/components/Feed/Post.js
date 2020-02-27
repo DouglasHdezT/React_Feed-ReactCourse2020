@@ -8,7 +8,7 @@ const Post = props => {
 				<h3>
 					{props.title}
 				</h3>
-				<h5>Ultimo like por: {props.name}</h5>
+				<h5>Compartido por: {props.name}</h5>
 			</header>
             
 			<main className="card-body">
